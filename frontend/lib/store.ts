@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { supabase } from './supabase';
+import { supabase } from './supabaseClient';
 
 // 1. Define the TypeScript types for the Store
 interface CartStoreState {
