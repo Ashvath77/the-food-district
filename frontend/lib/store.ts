@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { supabase } from './supabaseClient';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase directly inside this file
+const supabaseUrl = 'https://jqgjzfjsnwljogbkgfsd.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpxZ2p6Zmpzbndsam9nYmtnZnNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwNTE3NDMsImV4cCI6MjA5NTYyNzc0M30.4O8HRiNXFJHV5PQmiSA9Ru_NoAfz3Np-o2dQoSyRUA8';
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
 
 // 1. Define the TypeScript types for the Store
 interface CartStoreState {
