@@ -2,8 +2,20 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { supabase } from './supabase';
 
+// 1. Define the TypeScript types for the Store
+interface CartStoreState {
+  cart: any[];
+  orders: any[];
+  toastMessage: string | null;
+  addToCart: (item: any) => void;
+  completeOrder: (orderData: any) => Promise<void>;
+  updateQuantity: (id: number, type: 'inc' | 'dec') => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
+}
 
-export const useCartStore = create(
+// 2. Pass the <CartStoreState> type definition to create()
+export const useCartStore = create<CartStoreState>()(
   persist(
     (set) => ({
       cart: [],
